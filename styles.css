@@ -1,0 +1,138 @@
+@font-face {
+  font-family: "stratosskyeng";
+  src: url("./fonts/stratosskyengweb-regular.woff2") format("woff2"),
+       url("./fonts/stratosskyengweb-regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "stratosskyeng";
+  background-color: #004980;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.content-box {
+  background-color: #C2F5FF;
+  width: 480px;
+  height: 459px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-box p {
+  font-size: 40px;
+  font-weight: 400;
+  margin-bottom: 48px;
+}
+
+.cards-box {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 67px;
+}
+.card {
+  width: 98px;
+  height: 98px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  color: #0080C1;
+  font-size: 64px;
+  transition: all 0.2s;
+}
+
+.card:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.button {
+  width: 246px;
+  height: 50px;
+  background-color: #7AC100;
+  color: #FFF;
+  border: none;
+  font-size: 24px;
+  transition: all 0.2s;
+}
+
+.button:hover {
+  background-color: #85cf05;
+  cursor: pointer;
+}
+
+@media(max-width: 1024px) {
+  .content-box{
+    width: 320px;
+    height: 306px;
+  }
+
+  .content-box p {
+    font-size: 30px;
+    font-weight: 400;
+    margin-bottom: 32px;
+  }
+
+  .cards-box {
+    gap: 16px;
+    margin-bottom: 45px;
+  }
+  .card {
+    width: 65px;
+    height: 65px;
+    font-size: 43px;
+    transition: all 0.2s;
+  }
+
+  .button {
+    width: 164px;
+    height: 33px;
+    font-size: 16px;
+  }
+
+}
+
+@media(max-width: 375px) {
+  .content-box{
+    width: 267px;
+    height: 255px;
+  }
+
+  .content-box p {
+    font-size: 25px;
+    font-weight: 400;
+    margin-bottom: 27px;
+  }
+
+  .cards-box {
+    gap: 14px;
+    margin-bottom: 38px;
+  }
+  .card {
+    width: 54px;
+    height: 54px;
+    font-size: 36px;
+    transition: all 0.2s;
+  }
+
+  .button {
+    width: 137px;
+    height: 28px;
+    font-size: 14px;
+  }
+
+}
+
+
