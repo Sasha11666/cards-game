@@ -4,15 +4,21 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
   <title>Cards</title>
 </head>
 <body>
     <div class="content-box">
       <p>Выбери сложность</p>
       <div class="cards-box">
-        <div class="card"><div>1</div></div>
-        <div class="card"><div>2</div></div>
-        <div class="card"><div>3</div></div>
+        <input type="radio" id="radio1" name="radios" value="Стандатный" checked>
+        <label class="card" for="radio1">1</label>
+        
+        <input type="radio" id="radio2" name="radios" value="Морозостойкий">
+        <label class="card" for="radio2">2</label>
+        
+        <input type="radio" id="radio3" name="radios" value="Паростойкий">
+        <label class="card" for="radio3">3</label>
       </div>
       <button class="button">Старт</button>
     </div>

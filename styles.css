@@ -28,6 +28,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 12px;
 }
 
 .content-box p {
@@ -41,6 +42,15 @@ body {
   gap: 24px;
   margin-bottom: 67px;
 }
+
+.cards-box input[type="radio"] {
+  display: none;
+}
+
+.cards-box input[type="radio"]:checked+label {
+  background-color: #d0ffb7;
+}
+
 .card {
   width: 98px;
   height: 98px;
@@ -51,12 +61,15 @@ body {
   color: #0080C1;
   font-size: 64px;
   transition: all 0.2s;
+  border-radius: 12px;
 }
 
 .card:hover {
   cursor: pointer;
-  transform: scale(1.1);
+  background-color: #d0ffb7;
 }
+
+
 
 .button {
   width: 246px;
@@ -66,6 +79,7 @@ body {
   border: none;
   font-size: 24px;
   transition: all 0.2s;
+  border-radius: 12px;
 }
 
 .button:hover {
