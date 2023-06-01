@@ -20,11 +20,16 @@ body {
   height: 100vh;
 }
 
+.game-screen {
+  display: flex;
+  flex-direction: column;
+}
+
 .content-box {
   background-color: #C2F5FF;
   width: 480px;
   height: 459px;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -37,21 +42,31 @@ body {
   margin-bottom: 48px;
 }
 
-.cards-box {
+.levels-box {
   display: flex;
   gap: 24px;
   margin-bottom: 67px;
 }
 
-.cards-box input[type="radio"] {
+.levels-box input[type="radio"] {
   display: none;
 }
 
-.cards-box input[type="radio"]:checked+label {
+.levels-box input[type="radio"]:checked+label {
   background-color: #d0ffb7;
 }
 
-.card {
+.stopwatch {
+  display: none;
+  color: white;
+  justify-content: center;
+}
+
+.visible {
+  display: flex;
+}
+
+.level {
   width: 98px;
   height: 98px;
   display: flex;
@@ -64,7 +79,7 @@ body {
   border-radius: 12px;
 }
 
-.card:hover {
+.level:hover {
   cursor: pointer;
   background-color: #d0ffb7;
 }
@@ -87,6 +102,17 @@ body {
   cursor: pointer;
 }
 
+.cards {
+  display: none;
+  justify-content: center;
+  color: #FFF;
+}
+
+.visible-cards {
+  display: grid;
+}
+
+
 @media(max-width: 1024px) {
   .content-box{
     width: 320px;
@@ -99,11 +125,11 @@ body {
     margin-bottom: 32px;
   }
 
-  .cards-box {
+  .levels-box {
     gap: 16px;
     margin-bottom: 45px;
   }
-  .card {
+  .level {
     width: 65px;
     height: 65px;
     font-size: 43px;
@@ -130,11 +156,11 @@ body {
     margin-bottom: 27px;
   }
 
-  .cards-box {
+  .levels-box {
     gap: 14px;
     margin-bottom: 38px;
   }
-  .card {
+  .level {
     width: 54px;
     height: 54px;
     font-size: 36px;
