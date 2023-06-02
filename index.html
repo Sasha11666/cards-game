@@ -10,17 +10,40 @@
 <body>
     <div class="content-box">
       <p>Выбери сложность</p>
-      <div class="cards-box">
-        <input type="radio" id="radio1" name="radios" value="Стандатный" checked>
-        <label class="card" for="radio1">1</label>
+      
+        <form onsubmit="sendData()" class="form">
+         <div class="levels-box">
+          <input type="radio" id="radio1" name="radios" value="Easy">
+          <label class="level" for="radio1">1</label>
         
-        <input type="radio" id="radio2" name="radios" value="Морозостойкий">
-        <label class="card" for="radio2">2</label>
+          <input type="radio" id="radio2" name="radios" value="Medium">
+          <label class="level" for="radio2">2</label>
         
-        <input type="radio" id="radio3" name="radios" value="Паростойкий">
-        <label class="card" for="radio3">3</label>
-      </div>
-      <button class="button">Старт</button>
+          <input type="radio" id="radio3" name="radios" value="Hard">
+          <label class="level" for="radio3">3</label>
+         </div>
+         <button id="start-button" type="submit" class="button">Старт</button>
+        </form>  
     </div>
+    <div class="game-screen">
+    <div class="stopwatch">
+      <div>
+        <span class="interval minutes">00</span>
+        <span class="colon">:</span>
+        <span class="interval seconds">00</span>
+      </div>
+    </div>
+    <div class="easy-game cards">
+      Здесь будет 6 карточек
+    </div>
+    <div class="medium-game cards">
+      Здесь будет 12 карточек
+    </div>
+    <div class="hard-game cards">
+      Здесь будет 18 карточек
+    </div>
+    </div>
+
+    <script src="main.js"></script>
 </body>
 </html>
