@@ -36,6 +36,13 @@ body {
   border-radius: 12px;
 }
 
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .content-box p {
   font-size: 40px;
   font-weight: 400;
