@@ -1,0 +1,26 @@
+{
+    "name": "cards-game",
+    "version": "1.0.0",
+    "description": "",
+    "main": "main.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "format": "prettier --write ./*.js",
+        "lint:js": "eslint ./*.js",
+        "lint:css": "eslint ./*.css"
+    },
+    "repository": {
+        "type": "git",
+        "url": "(https://github.com/Sasha11666/cards-game.git)"
+    },
+    "author": "Sasha Basova",
+    "license": "ISC",
+    "devDependencies": {
+        "eslint": "^8.42.0",
+        "eslint-config-prettier": "^8.8.0",
+        "eslint-plugin-prettier": "^4.2.1",
+        "prettier": "^2.8.8",
+        "stylelint": "^15.7.0",
+        "stylelint-config-standard": "^33.0.0"
+    }
+}

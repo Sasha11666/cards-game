@@ -1,185 +1,423 @@
 @font-face {
-  font-family: "stratosskyeng";
-  src: url("./fonts/stratosskyengweb-regular.woff2") format("woff2"),
-       url("./fonts/stratosskyengweb-regular.woff") format("woff");
-  font-weight: normal;
-  font-style: normal;
+    font-family: stratosskyeng;
+    src: url('./fonts/stratosskyengweb-regular.woff2') format('woff2'),
+        url('./fonts/stratosskyengweb-regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
-*{
-  margin: 0;
-  padding: 0;
+* {
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  font-family: "stratosskyeng";
-  background-color: #004980;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+    font-family: stratosskyeng, serif;
+    background-color: #004980;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 .game-screen {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
 }
 
 .content-box {
-  background-color: #C2F5FF;
-  width: 480px;
-  height: 459px;
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 12px;
+    background-color: #c2f5ff;
+    width: 480px;
+    height: 459px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
 }
 
 .form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .content-box p {
-  font-size: 40px;
-  font-weight: 400;
-  margin-bottom: 48px;
+    font-size: 40px;
+    font-weight: 400;
+    margin-bottom: 48px;
 }
 
 .levels-box {
-  display: flex;
-  gap: 24px;
-  margin-bottom: 67px;
+    display: flex;
+    gap: 24px;
+    margin-bottom: 67px;
 }
 
-.levels-box input[type="radio"] {
-  display: none;
+.levels-box input[type='radio'] {
+    display: none;
 }
 
-.levels-box input[type="radio"]:checked+label {
-  background-color: #d0ffb7;
+.levels-box input[type='radio']:checked + label {
+    background-color: #d0ffb7;
 }
 
 .stopwatch {
-  display: none;
-  color: white;
-  justify-content: center;
+    display: none;
+    color: white;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    align-items: center;
+}
+
+.stopwatch div {
+    font-size: 30px;
 }
 
 .visible {
-  display: flex;
+    display: flex;
+}
+
+.restart-button {
+    width: 180px;
+    height: 50px;
+    background-color: #7ac100;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
 }
 
 .level {
-  width: 98px;
-  height: 98px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #fff;
-  color: #0080C1;
-  font-size: 64px;
-  transition: all 0.2s;
-  border-radius: 12px;
+    width: 98px;
+    height: 98px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    color: #0080c1;
+    font-size: 64px;
+    transition: all 0.2s;
+    border-radius: 12px;
 }
 
 .level:hover {
-  cursor: pointer;
-  background-color: #d0ffb7;
+    cursor: pointer;
+    background-color: #d0ffb7;
 }
 
-
-
 .button {
-  width: 246px;
-  height: 50px;
-  background-color: #7AC100;
-  color: #FFF;
-  border: none;
-  font-size: 24px;
-  transition: all 0.2s;
-  border-radius: 12px;
+    width: 246px;
+    height: 50px;
+    background-color: #7ac100;
+    color: #fff;
+    border: none;
+    font-size: 24px;
+    transition: all 0.2s;
+    border-radius: 12px;
 }
 
 .button:hover {
-  background-color: #85cf05;
-  cursor: pointer;
+    background-color: #85cf05;
+    cursor: pointer;
 }
 
 .cards {
-  display: none;
-  justify-content: center;
-  color: #FFF;
+    display: none;
+    justify-content: center;
+    color: #fff;
 }
 
 .visible-cards {
-  display: grid;
+    display: grid;
 }
 
-
-@media(max-width: 1024px) {
-  .content-box{
-    width: 320px;
-    height: 306px;
-  }
-
-  .content-box p {
-    font-size: 30px;
-    font-weight: 400;
-    margin-bottom: 32px;
-  }
-
-  .levels-box {
-    gap: 16px;
-    margin-bottom: 45px;
-  }
-  .level {
-    width: 65px;
-    height: 65px;
-    font-size: 43px;
-    transition: all 0.2s;
-  }
-
-  .button {
-    width: 164px;
-    height: 33px;
-    font-size: 16px;
-  }
-
+.easy-game {
+    grid-template-columns: repeat(3, auto);
+    margin: 0 auto;
+    display: grid;
+    grid-gap: 10px;
+    justify-content: center;
+    perspective: 500px;
 }
 
-@media(max-width: 375px) {
-  .content-box{
-    width: 267px;
-    height: 255px;
-  }
-
-  .content-box p {
-    font-size: 25px;
-    font-weight: 400;
-    margin-bottom: 27px;
-  }
-
-  .levels-box {
-    gap: 14px;
-    margin-bottom: 38px;
-  }
-  .level {
-    width: 54px;
-    height: 54px;
-    font-size: 36px;
-    transition: all 0.2s;
-  }
-
-  .button {
-    width: 137px;
-    height: 28px;
-    font-size: 14px;
-  }
-
+.medium-game {
+    grid-template-columns: repeat(4, auto);
+    margin: 0 auto;
+    display: grid;
+    grid-gap: 10px;
+    justify-content: center;
+    perspective: 500px;
 }
 
+.hard-game {
+    grid-template-columns: repeat(6, auto);
+    margin: 0 auto;
+    display: grid;
+    grid-gap: 10px;
+    justify-content: center;
+    perspective: 500px;
+}
 
+.card {
+    position: relative;
+    height: 133px;
+    width: 95px;
+    cursor: pointer;
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: transform 500ms ease-in-out;
+    backface-visibility: hidden;
+}
+
+.card-back {
+    background-image: url('assets/back-face.jpg');
+    transform: rotateY(0);
+}
+
+.card-front {
+    background-size: cover;
+    transform: rotateY(180deg);
+}
+
+.card1 .card-front {
+    background-image: url('assets/ace-spades.jpg');
+}
+
+.card2 .card-front {
+    background-image: url('assets/king-spades.jpg');
+}
+
+.card3 .card-front {
+    background-image: url('assets/dame-spades.jpg');
+}
+
+.card4 .card-front {
+    background-image: url('assets/jack-spades.jpg');
+}
+
+.card5 .card-front {
+    background-image: url('assets/ten-spades.jpg');
+}
+
+.card6 .card-front {
+    background-image: url('assets/nine-spades.jpg');
+}
+
+.card7 .card-front {
+    background-image: url('assets/eight-spades.jpg');
+}
+
+.card8 .card-front {
+    background-image: url('assets/seven-spades.jpg');
+}
+
+.card9 .card-front {
+    background-image: url('assets/six-spades.jpg');
+}
+
+.card10 .card-front {
+    background-image: url('assets/ace-hearts.jpg');
+}
+
+.card11 .card-front {
+    background-image: url('assets/king-hearts.jpg');
+}
+
+.card12 .card-front {
+    background-image: url('assets/dame-hearts.jpg');
+}
+
+.card13 .card-front {
+    background-image: url('assets/jack-hearts.jpg');
+}
+
+.card14 .card-front {
+    background-image: url('assets/ten-hearts.jpg');
+}
+
+.card15 .card-front {
+    background-image: url('assets/nine-hearts.jpg');
+}
+
+.card16 .card-front {
+    background-image: url('assets/eight-hearts.jpg');
+}
+
+.card17 .card-front {
+    background-image: url('assets/seven-hearts.jpg');
+}
+
+.card18 .card-front {
+    background-image: url('assets/six-hearts.jpg');
+}
+
+.card19 .card-front {
+    background-image: url('assets/ace-diamonds.jpg');
+}
+
+.card20 .card-front {
+    background-image: url('assets/king-diamonds.jpg');
+}
+
+.card21 .card-front {
+    background-image: url('assets/dame-diamonds.jpg');
+}
+
+.card22 .card-front {
+    background-image: url('assets/jack-diamonds.jpg');
+}
+
+.card23 .card-front {
+    background-image: url('assets/ten-diamonds.jpg');
+}
+
+.card24 .card-front {
+    background-image: url('assets/nine-diamonds.jpg');
+}
+
+.card25 .card-front {
+    background-image: url('assets/eight-diamonds.jpg');
+}
+
+.card26 .card-front {
+    background-image: url('assets/seven-diamonds.jpg');
+}
+
+.card27 .card-front {
+    background-image: url('assets/six-diamonds.jpg');
+}
+
+.card28 .card-front {
+    background-image: url('assets/ace-clubs.jpg');
+}
+
+.card29 .card-front {
+    background-image: url('assets/king-clubs.jpg');
+}
+
+.card30 .card-front {
+    background-image: url('assets/dame-clubs.jpg');
+}
+
+.card31 .card-front {
+    background-image: url('assets/jack-clubs.jpg');
+}
+
+.card32 .card-front {
+    background-image: url('assets/ten-clubs.jpg');
+}
+
+.card33 .card-front {
+    background-image: url('assets/nine-clubs.jpg');
+}
+
+.card34 .card-front {
+    background-image: url('assets/eight-clubs.jpg');
+}
+
+.card35 .card-front {
+    background-image: url('assets/seven-clubs.jpg');
+}
+
+.card36 .card-front {
+    background-image: url('assets/six-clubs.jpg');
+}
+
+.card.visible .card-back {
+    transform: rotateY(-180deg);
+}
+
+.card.visible .card-front {
+    transform: rotateY(0);
+}
+
+@media (width <= 1024px) {
+    .content-box {
+        width: 320px;
+        height: 306px;
+    }
+
+    .content-box p {
+        font-size: 30px;
+        font-weight: 400;
+        margin-bottom: 32px;
+    }
+
+    .levels-box {
+        gap: 16px;
+        margin-bottom: 45px;
+    }
+
+    .level {
+        width: 65px;
+        height: 65px;
+        font-size: 43px;
+        transition: all 0.2s;
+    }
+
+    .button {
+        width: 164px;
+        height: 33px;
+        font-size: 16px;
+    }
+
+    .card {
+        height: 93px;
+        width: 55px;
+    }
+
+    .easy-game .card {
+        height: 133px;
+        width: 95px;
+    }
+
+    .medium-game .card {
+        height: 113px;
+        width: 75px;
+    }
+
+    .card-face {
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+}
+
+@media (width <= 375px) {
+    .content-box {
+        width: 267px;
+        height: 255px;
+    }
+
+    .content-box p {
+        font-size: 25px;
+        font-weight: 400;
+        margin-bottom: 27px;
+    }
+
+    .levels-box {
+        gap: 14px;
+        margin-bottom: 38px;
+    }
+
+    .level {
+        width: 54px;
+        height: 54px;
+        font-size: 36px;
+        transition: all 0.2s;
+    }
+
+    .button {
+        width: 137px;
+        height: 28px;
+        font-size: 14px;
+    }
+}
