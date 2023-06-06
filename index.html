@@ -1,49 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <title>Cards</title>
-</head>
-<body>
-    <div class="content-box">
-      <p>Выбери сложность</p>
-      
-        <form onsubmit="sendData()" class="form">
-         <div class="levels-box">
-          <input type="radio" id="radio1" name="radios" value="Easy">
-          <label class="level" for="radio1">1</label>
-        
-          <input type="radio" id="radio2" name="radios" value="Medium">
-          <label class="level" for="radio2">2</label>
-        
-          <input type="radio" id="radio3" name="radios" value="Hard">
-          <label class="level" for="radio3">3</label>
-         </div>
-         <button id="start-button" type="submit" class="button">Старт</button>
-        </form>  
-    </div>
-    <div class="game-screen">
-    <div class="stopwatch">
-      <div>
-        <span class="interval minutes">00</span>
-        <span class="colon">:</span>
-        <span class="interval seconds">00</span>
-      </div>
-    </div>
-    <div class="easy-game cards">
-      Здесь будет 6 карточек
-    </div>
-    <div class="medium-game cards">
-      Здесь будет 12 карточек
-    </div>
-    <div class="hard-game cards">
-      Здесь будет 18 карточек
-    </div>
-    </div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="styles.css" />
+        <title>Cards</title>
+    </head>
+    <body>
+        <div class="content-box">
+            <p>Выбери сложность</p>
 
-    <script src="main.js"></script>
-</body>
+            <form class="form">
+                <div class="levels-box">
+                    <input
+                        type="radio"
+                        id="radio1"
+                        name="radios"
+                        value="Easy"
+                    />
+                    <label class="level" for="radio1">1</label>
+
+                    <input
+                        type="radio"
+                        id="radio2"
+                        name="radios"
+                        value="Medium"
+                    />
+                    <label class="level" for="radio2">2</label>
+
+                    <input
+                        type="radio"
+                        id="radio3"
+                        name="radios"
+                        value="Hard"
+                    />
+                    <label class="level" for="radio3">3</label>
+                </div>
+                <button id="start-button" type="submit" class="button">
+                    Старт
+                </button>
+            </form>
+        </div>
+        <div class="game-screen">
+            <div class="stopwatch">
+                <div>
+                    <span class="interval minutes">00</span>
+                    <span class="colon">.</span>
+                    <span class="interval seconds">00</span>
+                </div>
+                <button class="restart-button">Начать заново</button>
+            </div>
+            <div class="easy-game cards"></div>
+            <div class="medium-game cards"></div>
+            <div class="hard-game cards"></div>
+        </div>
+
+        <script src="main.js"></script>
+    </body>
 </html>
