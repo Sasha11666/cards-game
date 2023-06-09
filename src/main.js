@@ -1,3 +1,5 @@
+import './styles.css'
+
 let radios = Array.from(document.getElementsByName('radios'))
 let startScreen = document.querySelector('.content-box')
 let easyGame = document.querySelector('.easy-game')
@@ -10,12 +12,14 @@ let formElement = document.querySelector('.form')
 let level = 'Easy'
 let minutes = 0
 let seconds = 0
+let cardToCompare = 0
+let busy
 
 function createCards() {
     let allCards = []
     for (let i = 1; i < 37; i++) {
         allCards.push(
-            `<div class="card card${i}">
+            `<div class="card card${i}" data-index="${i}">
       <div class="card-back card-face"></div>
       <div class="card-front card-face"></div>
     </div>`
@@ -24,12 +28,36 @@ function createCards() {
     return allCards
 }
 
+function canFlipCard(card) {
+    return !busy && cardToCompare !== card
+}
+
+function checkForCardMatch(card) {
+    if (card.dataset.index === cardToCompare.dataset.index) {
+        setTimeout(() => {
+            alert('Вы выиграли!')
+        }, 1000)
+    } else {
+        setTimeout(() => {
+            alert('Вы проиграли :(')
+        }, 1000)
+    }
+
+    cardToCompare = null
+}
+
 function flipCards() {
     let cards = Array.from(document.getElementsByClassName('card'))
-    console.log(cards)
     cards.forEach((card) => {
         card.addEventListener('click', () => {
-            card.classList.add('visible')
+            if (canFlipCard(card)) {
+                card.classList.add('visible')
+                if (cardToCompare) {
+                    checkForCardMatch(card)
+                } else {
+                    cardToCompare = card
+                }
+            }
         })
     })
 }
@@ -53,8 +81,14 @@ function shuffleCardsAndShow() {
         cards.forEach((card) => {
             card.classList.remove('visible')
         })
-    }, 3000)
+        busy = false
+    }, 5000)
 }
+
+// function compareCards() {
+//     let cards = Array.from(document.getElementsByClassName('card'));
+//     cards.add
+// }
 
 function showEasyScreen(cardsArray) {
     let easyCards = []
@@ -65,12 +99,12 @@ function showEasyScreen(cardsArray) {
             easyCards.push(cardsArray[randIndex])
             easyCards.push(cardsArray[randIndex])
             IndexToCompare = randIndex
-            console.log(IndexToCompare)
-            console.log(randIndex)
         } else {
             i++
         }
     }
+
+    console.log(easyCards)
 
     let easyCardsHTML = ''
     easyCards.forEach((card) => {
@@ -90,14 +124,8 @@ function showMediumScreen(cardsArray) {
         if (+randIndex !== +IndexToCompare) {
             mediumCards.push(cardsArray[randIndex])
             mediumCards.push(cardsArray[randIndex])
-            console.log('if')
-            console.log(IndexToCompare)
-            console.log(randIndex)
             IndexToCompare = randIndex
         } else {
-            console.log('else')
-            console.log(IndexToCompare)
-            console.log(randIndex)
             i++
         }
     }
@@ -136,7 +164,7 @@ function showHardScreen(cardsArray) {
     flipCards()
 }
 
-function sendData() {
+function chooseLevel() {
     event.preventDefault()
     startScreen.classList.remove('visible')
     stopwatchBox.classList.add('visible')
@@ -186,6 +214,8 @@ function sendData() {
 function beginGame() {
     minutes = 0
     seconds = 0
+    busy = true
+    cardToCompare = null
 
     startScreen.classList.add('visible')
     easyGame.classList.remove('visible-cards')
@@ -193,7 +223,11 @@ function beginGame() {
     mediumGame.classList.remove('visible-cards')
     stopwatchBox.classList.remove('visible')
 
-    formElement.addEventListener('submit', sendData)
+    formElement.addEventListener('submit', chooseLevel)
 }
 
-beginGame()
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', beginGame())
+} else {
+    beginGame()
+}
