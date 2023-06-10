@@ -5,9 +5,12 @@
     "main": "main.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "format": "prettier --write ./*.js",
-        "lint:js": "eslint ./*.js",
-        "lint:css": "eslint ./*.css"
+        "format": "prettier --write ./src/*.js",
+        "lint:js": "eslint ./src/*.js",
+        "lint:css": "eslint ./src/*.css",
+        "build": "cross-env NODE_ENV=production webpack",
+        "start": "webpack-dev-server --open",
+        "dev": "cross-env NODE_ENV=development webpack"
     },
     "repository": {
         "type": "git",
@@ -16,11 +19,20 @@
     "author": "Sasha Basova",
     "license": "ISC",
     "devDependencies": {
+        "copy-webpack-plugin": "^11.0.0",
+        "cross-env": "^7.0.3",
+        "css-loader": "^6.8.1",
+        "css-minimizer-webpack-plugin": "^5.0.0",
         "eslint": "^8.42.0",
         "eslint-config-prettier": "^8.8.0",
         "eslint-plugin-prettier": "^4.2.1",
+        "html-webpack-plugin": "^5.5.1",
+        "mini-css-extract-plugin": "^2.7.6",
         "prettier": "^2.8.8",
+        "style-loader": "^3.3.3",
         "stylelint": "^15.7.0",
-        "stylelint-config-standard": "^33.0.0"
+        "stylelint-config-standard": "^33.0.0",
+        "webpack-cli": "^5.1.4",
+        "webpack-dev-server": "^4.15.0"
     }
 }
