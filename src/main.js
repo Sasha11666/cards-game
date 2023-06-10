@@ -33,15 +33,13 @@ function canFlipCard(card) {
 }
 
 function checkForCardMatch(card) {
-    if (card.dataset.index === cardToCompare.dataset.index) {
-        setTimeout(() => {
-            alert('Вы выиграли!')
-        }, 1000)
-    } else {
-        setTimeout(() => {
+    setTimeout(() => {
+        if (card.dataset.index === cardToCompare.dataset.index) {
             alert('Вы проиграли :(')
-        }, 1000)
-    }
+        } else {
+            alert('Вы выиграли!')
+        }
+    }, 1000)
 
     cardToCompare = null
 }
