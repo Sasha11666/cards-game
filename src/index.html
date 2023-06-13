@@ -18,6 +18,7 @@
                         id="radio1"
                         name="radios"
                         value="Easy"
+                        class="radios"
                     />
                     <label class="level" for="radio1">1</label>
 
@@ -26,6 +27,7 @@
                         id="radio2"
                         name="radios"
                         value="Medium"
+                        class="radios"
                     />
                     <label class="level" for="radio2">2</label>
 
@@ -34,6 +36,7 @@
                         id="radio3"
                         name="radios"
                         value="Hard"
+                        class="radios"
                     />
                     <label class="level" for="radio3">3</label>
                 </div>
@@ -41,6 +44,19 @@
                     Старт
                 </button>
             </form>
+        </div>
+        <div class="victory-lose-screen">
+            <div class="victory-lose-icon"></div>
+            <p class="victory-lose-text">Вы выиграли!</p>
+            <p class="victory-lose-subtext">Затраченное время:</p>
+            <div class="time-spent">
+                <span class="time-spent-minutes">00</span>
+                <span class="colon">.</span>
+                <span class="time-spent-seconds">00</span>
+            </div>
+            <button id="victory-restart-button" class="button">
+                Играть снова
+            </button>
         </div>
         <div class="game-screen">
             <div class="stopwatch">
