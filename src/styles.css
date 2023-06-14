@@ -76,10 +76,6 @@ body {
     font-size: 30px;
 }
 
-.visible {
-    display: flex;
-}
-
 .restart-button {
     width: 180px;
     height: 50px;
@@ -132,14 +128,10 @@ body {
     color: #fff;
 }
 
-.visible-cards {
-    display: grid;
-}
-
 .easy-game {
     grid-template-columns: repeat(3, auto);
     margin: 0 auto;
-    display: grid;
+    display: none;
     grid-gap: 10px;
     justify-content: center;
     perspective: 500px;
@@ -148,7 +140,7 @@ body {
 .medium-game {
     grid-template-columns: repeat(4, auto);
     margin: 0 auto;
-    display: grid;
+    display: none;
     grid-gap: 10px;
     justify-content: center;
     perspective: 500px;
@@ -157,10 +149,14 @@ body {
 .hard-game {
     grid-template-columns: repeat(6, auto);
     margin: 0 auto;
-    display: grid;
+    display: none;
     grid-gap: 10px;
     justify-content: center;
     perspective: 500px;
+}
+
+.visible-cards {
+    display: grid;
 }
 
 .card {
@@ -338,6 +334,52 @@ body {
 
 .card.visible .card-front {
     transform: rotateY(0);
+}
+
+.victory-lose-screen {
+    background-color: #c2f5ff;
+    width: 480px;
+    height: 459px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    gap: 24px;
+    padding: 24px;
+}
+
+.victory-lose-text {
+    color: #004980;
+    font-size: 40px;
+    font-weight: 400;
+}
+
+.victory-lose-subtext {
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.victory-lose-icon {
+    width: 91px;
+    height: 91px;
+    background-size: contain;
+}
+
+.celebration {
+    background-image: url('assets/celebration.png');
+}
+
+.dead {
+    background-image: url('assets/dead.png');
+}
+
+.time-spent {
+    font-size: 64px;
+}
+
+.visible {
+    display: flex;
 }
 
 @media (width <= 1024px) {
