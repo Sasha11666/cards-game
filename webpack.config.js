@@ -41,7 +41,7 @@ module.exports = {
       new MiniCssExtractPlugin() 
     ],
     resolve: {
-      extensions: [".ts", ".js"],
+      extensions: [".ts", ".js", ".scss"],
     },
     optimization: {
       minimizer: ["...", new CssMinimizerPlugin()]

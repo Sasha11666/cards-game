@@ -23,6 +23,7 @@ let cardToCompare: HTMLElement | null = null
 let busy: boolean
 let result: string = ''
 let interval: number
+let matchedCards: HTMLElement[] = []
 
 function createCards() {
     let allCards: string[] = []
@@ -63,28 +64,38 @@ function showVictoryLoseScreen() {
     }
 }
 
-function checkForCardMatch(card: HTMLElement) {
+function checkForCardMatch(card: HTMLElement, nums: String[]) {
     setTimeout((): void => {
         if (card.dataset.index === cardToCompare?.dataset.index) {
-            result = 'victory'
-            showVictoryLoseScreen()
+            matchedCards.push(card)
+            if (cardToCompare) {
+                matchedCards.push(cardToCompare)
+            }
+            console.log(nums)
+            console.log(matchedCards)
+            if (matchedCards.length === nums.length) {
+                result = 'victory'
+                showVictoryLoseScreen()
+            }
         } else {
             result = 'lose'
             showVictoryLoseScreen()
         }
 
         cardToCompare = null
+        busy = false
     }, 1000)
 }
 
-function flipCards() {
+function flipCards(nums: string[]) {
     let cards: HTMLElement[] = Array.from(document.querySelectorAll('.card'))
     cards.forEach((card) => {
         card.addEventListener('click', () => {
             if (canFlipCard(card)) {
                 card.classList.add('visible')
                 if (cardToCompare) {
-                    checkForCardMatch(card)
+                    busy = true
+                    checkForCardMatch(card, nums)
                 } else {
                     cardToCompare = card
                 }
@@ -118,19 +129,17 @@ function shuffleCardsAndShow() {
 
 function showEasyScreen(cardsArray: string[]) {
     let easyCards = []
-    let IndexToCompare = '0'
+    let indexes: String[] = []
     for (let i = 3; i > 0; i--) {
         let randIndex = Math.floor(Math.random() * (35 + 1))
-        if (+randIndex !== +IndexToCompare) {
+        if (!indexes.includes(String(randIndex))) {
             easyCards.push(cardsArray[randIndex])
             easyCards.push(cardsArray[randIndex])
-            IndexToCompare = String(randIndex)
+            indexes.push(String(randIndex))
         } else {
             i++
         }
     }
-
-    console.log(easyCards)
 
     let easyCardsHTML = ''
     easyCards.forEach((card) => {
@@ -139,18 +148,18 @@ function showEasyScreen(cardsArray: string[]) {
 
     if (easyGame) easyGame.innerHTML = easyCardsHTML
     shuffleCardsAndShow()
-    flipCards()
+    flipCards(easyCards)
 }
 
 function showMediumScreen(cardsArray: string[]) {
     let mediumCards = []
-    let IndexToCompare = 'd'
+    let indexes: String[] = []
     for (let i = 6; i > 0; i--) {
         let randIndex = Math.floor(Math.random() * (35 + 1))
-        if (+randIndex !== +IndexToCompare) {
+        if (!indexes.includes(String(randIndex))) {
             mediumCards.push(cardsArray[randIndex])
             mediumCards.push(cardsArray[randIndex])
-            IndexToCompare = String(randIndex)
+            indexes.push(String(randIndex))
         } else {
             i++
         }
@@ -163,18 +172,18 @@ function showMediumScreen(cardsArray: string[]) {
 
     if (mediumGame) mediumGame.innerHTML = mediumCardsHTML
     shuffleCardsAndShow()
-    flipCards()
+    flipCards(mediumCards)
 }
 
 function showHardScreen(cardsArray: string[]) {
     let hardCards = []
-    let IndexToCompare = '0'
+    let indexes: String[] = []
     for (let i = 9; i > 0; i--) {
         let randIndex = Math.floor(Math.random() * (35 + 1))
-        if (+randIndex !== +IndexToCompare) {
+        if (!indexes.includes(String(randIndex))) {
             hardCards.push(cardsArray[randIndex])
             hardCards.push(cardsArray[randIndex])
-            IndexToCompare = String(randIndex)
+            indexes.push(String(randIndex))
         } else {
             i++
         }
@@ -187,7 +196,7 @@ function showHardScreen(cardsArray: string[]) {
 
     if (hardGame) hardGame.innerHTML = hardCardsHTML
     shuffleCardsAndShow()
-    flipCards()
+    flipCards(hardCards)
 }
 
 function chooseLevel() {
@@ -247,6 +256,7 @@ function beginGame() {
     seconds = 0
     busy = true
     cardToCompare = null
+    matchedCards = []
     if (secondsBox) secondsBox.innerHTML = '00'
     if (minutesBox) minutesBox.innerHTML = '00'
     clearInterval(interval)

@@ -11,6 +11,7 @@
         "sourceType": "module",
         "allowImportExportEverywhere": true
     },
+
     "rules": {
         "prettier/prettier": [
             "error",
