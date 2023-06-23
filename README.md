@@ -1,0 +1,1 @@
+This is a mix-or-match card game with two scenarios: a player guesses all card pairs correctly and wins the game or chooses a mismatched pair of cards and loses. There are three levels of difficulty. Depending on the chosen level, a different number of cards will be displayed for memorizing.
