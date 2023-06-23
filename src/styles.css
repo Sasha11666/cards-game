@@ -433,7 +433,7 @@ body {
     }
 }
 
-@media (width <= 375px) {
+@media (width <= 376px) {
     .content-box {
         width: 267px;
         height: 255px;
@@ -461,5 +461,24 @@ body {
         width: 137px;
         height: 28px;
         font-size: 14px;
+    }
+
+    .stopwatch {
+        justify-content: center;
+        gap: 90px;
+    }
+
+    .stopwatch div {
+        font-size: 20px;
+    }
+
+    .restart-button {
+        width: 150px;
+        height: 30px;
+        font-size: 14px;
+    }
+
+    .hard-game {
+        grid-gap: 5px;
     }
 }
