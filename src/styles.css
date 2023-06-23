@@ -433,7 +433,7 @@ body {
     }
 }
 
-@media (width <= 376px) {
+@media (width <= 390px) {
     .content-box {
         width: 267px;
         height: 255px;
