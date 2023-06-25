@@ -9,7 +9,7 @@ const {
     startStopwatch,
     chooseLevel,
     settInterval,
-} = require('./src/cards.js')
+} = require('./cards.js')
 
 function getExampleDOM() {
     const div = document.createElement('div')
