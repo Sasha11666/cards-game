@@ -1,32 +1,34 @@
 import './styles.css'
 
-let radios = Array.from(document.querySelectorAll<HTMLInputElement>('.radios'))
-let startScreen = document.querySelector('.content-box')
-let victoryScreen = document.querySelector('.victory-lose-screen')
-let spentMinutes = document.querySelector('.time-spent-minutes')
-let spentSeconds = document.querySelector('.time-spent-seconds')
-let victoryButton = document.getElementById('victory-restart-button')
-let victoryLoseText = document.querySelector('.victory-lose-text')
-let victoryLoseIcon = document.querySelector('.victory-lose-icon')
-let easyGame = document.querySelector('.easy-game')
-let mediumGame = document.querySelector('.medium-game')
-let hardGame = document.querySelector('.hard-game')
-let restartButton = document.querySelector('.restart-button')
-let stopwatchBox = document.querySelector('.stopwatch')
-let minutesBox = document.querySelector('.minutes')
-let secondsBox = document.querySelector('.seconds')
-let formElement = document.querySelector('.form')
-let level: string = 'Easy'
-let minutes: number = 0
-let seconds: number = 0
+const radios = Array.from(
+    document.querySelectorAll<HTMLInputElement>('.radios')
+)
+const startScreen = document.querySelector('.content-box')
+const victoryScreen = document.querySelector('.victory-lose-screen')
+const spentMinutes = document.querySelector('.time-spent-minutes')
+const spentSeconds = document.querySelector('.time-spent-seconds')
+const victoryButton = document.getElementById('victory-restart-button')
+const victoryLoseText = document.querySelector('.victory-lose-text')
+const victoryLoseIcon = document.querySelector('.victory-lose-icon')
+const easyGame = document.querySelector('.easy-game')
+const mediumGame = document.querySelector('.medium-game')
+const hardGame = document.querySelector('.hard-game')
+const restartButton = document.querySelector('.restart-button')
+const stopwatchBox = document.querySelector('.stopwatch')
+const minutesBox = document.querySelector('.minutes')
+const secondsBox = document.querySelector('.seconds')
+const formElement = document.querySelector('.form')
+let level = 'Easy'
+let minutes = 0
+let seconds = 0
 let cardToCompare: HTMLElement | null = null
 let busy: boolean
-let result: string = ''
+let result = ''
 let interval: number
 let matchedCards: HTMLElement[] = []
 
 function createCards() {
-    let allCards: string[] = []
+    const allCards: string[] = []
     for (let i = 1; i < 37; i++) {
         allCards.push(
             `<div class="card card${i}" data-index="${i}">
@@ -64,7 +66,7 @@ function showVictoryLoseScreen() {
     }
 }
 
-function checkForCardMatch(card: HTMLElement, nums: String[]) {
+function checkForCardMatch(card: HTMLElement, nums: string[]) {
     setTimeout((): void => {
         if (card.dataset.index === cardToCompare?.dataset.index) {
             matchedCards.push(card)
@@ -88,7 +90,7 @@ function checkForCardMatch(card: HTMLElement, nums: String[]) {
 }
 
 function flipCards(nums: string[]) {
-    let cards: HTMLElement[] = Array.from(document.querySelectorAll('.card'))
+    const cards: HTMLElement[] = Array.from(document.querySelectorAll('.card'))
     cards.forEach((card) => {
         card.addEventListener('click', () => {
             if (canFlipCard(card)) {
@@ -105,10 +107,10 @@ function flipCards(nums: string[]) {
 }
 
 function shuffleCardsAndShow() {
-    let cards: HTMLElement[] = Array.from(document.querySelectorAll('.card'))
+    const cards: HTMLElement[] = Array.from(document.querySelectorAll('.card'))
 
     for (let i = cards.length - 1; i > 0; i--) {
-        let randIndex = Math.floor(Math.random() * (i + 1))
+        const randIndex = Math.floor(Math.random() * (i + 1))
         cards[randIndex].style.order = String(i)
         cards[i].style.order = String(randIndex)
     }
@@ -128,10 +130,10 @@ function shuffleCardsAndShow() {
 }
 
 function showEasyScreen(cardsArray: string[]) {
-    let easyCards = []
-    let indexes: String[] = []
+    const easyCards = []
+    const indexes: string[] = []
     for (let i = 3; i > 0; i--) {
-        let randIndex = Math.floor(Math.random() * (35 + 1))
+        const randIndex = Math.floor(Math.random() * (35 + 1))
         if (!indexes.includes(String(randIndex))) {
             easyCards.push(cardsArray[randIndex])
             easyCards.push(cardsArray[randIndex])
@@ -152,10 +154,10 @@ function showEasyScreen(cardsArray: string[]) {
 }
 
 function showMediumScreen(cardsArray: string[]) {
-    let mediumCards = []
-    let indexes: String[] = []
+    const mediumCards = []
+    const indexes: string[] = []
     for (let i = 6; i > 0; i--) {
-        let randIndex = Math.floor(Math.random() * (35 + 1))
+        const randIndex = Math.floor(Math.random() * (35 + 1))
         if (!indexes.includes(String(randIndex))) {
             mediumCards.push(cardsArray[randIndex])
             mediumCards.push(cardsArray[randIndex])
@@ -176,10 +178,10 @@ function showMediumScreen(cardsArray: string[]) {
 }
 
 function showHardScreen(cardsArray: string[]) {
-    let hardCards = []
-    let indexes: String[] = []
+    const hardCards = []
+    const indexes: string[] = []
     for (let i = 9; i > 0; i--) {
-        let randIndex = Math.floor(Math.random() * (35 + 1))
+        const randIndex = Math.floor(Math.random() * (35 + 1))
         if (!indexes.includes(String(randIndex))) {
             hardCards.push(cardsArray[randIndex])
             hardCards.push(cardsArray[randIndex])
@@ -204,7 +206,7 @@ function chooseLevel() {
     startScreen?.classList.remove('visible')
     stopwatchBox?.classList.add('visible')
     restartButton?.addEventListener('click', beginGame)
-    let cardsArray = createCards()
+    const cardsArray = createCards()
 
     radios.forEach((radio) => {
         if (radio.checked) {

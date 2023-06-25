@@ -1,5 +1,5 @@
 function createCards() {
-    let allCards = []
+    const allCards = []
     for (let i = 1; i < 37; i++) {
         allCards.push(
             `<div class="card card${i}" data-index="${i}">
@@ -31,7 +31,7 @@ function chooseLevel({
     // event.preventDefault()
     startScreen.classList.remove('visible')
     stopwatchBox.classList.add('visible')
-    let cardsArray = createCards()
+    const cardsArray = createCards()
 
     radios.forEach((radio) => {
         if (radio.checked) {
