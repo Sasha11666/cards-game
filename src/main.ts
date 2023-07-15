@@ -18,6 +18,7 @@ const stopwatchBox = document.querySelector('.stopwatch')
 const minutesBox = document.querySelector('.minutes')
 const secondsBox = document.querySelector('.seconds')
 const formElement = document.querySelector('.form')
+const button = document.querySelector('button')
 let level = 'Easy'
 let minutes = 0
 let seconds = 0
@@ -26,6 +27,14 @@ let busy: boolean
 let result = ''
 let interval: number
 let matchedCards: HTMLElement[] = []
+const flipSound = new Audio('../static/audio/card-flip.mp3')
+const matchSound = new Audio('../static/audio/success.mp3')
+const victorySound = new Audio('../static/audio/victory.mp3')
+const gameOverSound = new Audio('../static/audio/game-over.mp3')
+const clickSound = new Audio('../static/audio/click.mp3')
+button?.addEventListener('click', () => {
+    clickSound.play()
+})
 
 function createCards() {
     const allCards: string[] = []
@@ -54,7 +63,11 @@ function showVictoryLoseScreen() {
         spentMinutes.innerHTML = minutesBox.innerHTML
     if (spentSeconds && secondsBox)
         spentSeconds.innerHTML = secondsBox.innerHTML
-    if (victoryButton) victoryButton.addEventListener('click', beginGame)
+    if (victoryButton)
+        victoryButton.addEventListener('click', () => {
+            clickSound.play()
+            beginGame()
+        })
     if (result === 'victory') {
         if (victoryLoseText) victoryLoseText.innerHTML = 'Вы выиграли!'
         victoryLoseIcon?.classList.remove('dead')
@@ -69,6 +82,7 @@ function showVictoryLoseScreen() {
 function checkForCardMatch(card: HTMLElement, nums: string[]) {
     setTimeout((): void => {
         if (card.dataset.index === cardToCompare?.dataset.index) {
+            matchSound.play()
             matchedCards.push(card)
             if (cardToCompare) {
                 matchedCards.push(cardToCompare)
@@ -76,10 +90,12 @@ function checkForCardMatch(card: HTMLElement, nums: string[]) {
             console.log(nums)
             console.log(matchedCards)
             if (matchedCards.length === nums.length) {
+                victorySound.play()
                 result = 'victory'
                 showVictoryLoseScreen()
             }
         } else {
+            gameOverSound.play()
             result = 'lose'
             showVictoryLoseScreen()
         }
@@ -94,6 +110,7 @@ function flipCards(nums: string[]) {
     cards.forEach((card) => {
         card.addEventListener('click', () => {
             if (canFlipCard(card)) {
+                flipSound.play()
                 card.classList.add('visible')
                 if (cardToCompare) {
                     busy = true
@@ -205,7 +222,10 @@ function chooseLevel() {
     if (event) event.preventDefault()
     startScreen?.classList.remove('visible')
     stopwatchBox?.classList.add('visible')
-    restartButton?.addEventListener('click', beginGame)
+    restartButton?.addEventListener('click', () => {
+        clickSound.play()
+        beginGame()
+    })
     const cardsArray = createCards()
 
     radios.forEach((radio) => {
@@ -262,6 +282,10 @@ function beginGame() {
     if (secondsBox) secondsBox.innerHTML = '00'
     if (minutesBox) minutesBox.innerHTML = '00'
     clearInterval(interval)
+    gameOverSound.pause()
+    victorySound.pause()
+    gameOverSound.currentTime = 0
+    victorySound.currentTime = 0
 
     startScreen?.classList.add('visible')
     easyGame?.classList.remove('visible-cards')
